@@ -8,8 +8,14 @@ use Illuminate\Database\Relations\BelongsTo;
 
 class Post extends Model
 {
-    public function user():BelongsTo
+
+    protected $fillable = [
+        'title',
+        'body',
+    ];
+    
+    public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\Models\User');
     }
 }
