@@ -71,6 +71,26 @@
         @endauth
       </ul>
       <!-- Left links -->
+
+      <!-- Search form -->
+      <form class="d-flex input-group w-auto" action="{{ route('posts.index') }}">
+        <input
+          type="text" name="keyword" value="{{ $keyword }}"
+          class="form-control"
+          placeholder="検索フォーム"
+          aria-label="Search"
+        />
+        @if($posts->count())
+
+        <table border="1">
+          @foreach ($posts as $post)
+          @endforeach
+        </table>
+        @else
+        <p>見つかりませんでした。</p>
+        @endif
+        <input type="submit" value="検索" class="btn btn-info">
+      </form>
     </div>
     <!-- Collapsible wrapper -->
   </div>
