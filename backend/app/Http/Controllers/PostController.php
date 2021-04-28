@@ -19,11 +19,20 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $keyword = $request->input('keyword');
+        $query = Post::query();
+
+        if (!empty($keyword)) {
+            $query->where('title', 'LIKE', "%{$keyword}%");
+        }
+
+        $posts = $query->get();
+        
         $posts = Post::all()->sortByDesc('created_at');
 
-        return view('posts.index', ['posts' => $posts]);
+        return view('posts.index', compact('posts', 'keyword'));
     }
 
     /**
@@ -42,8 +51,8 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(MainRequest $request, Post $post)
-    {
+    public function store(PostRequest $request, Post $post)
+    {   
         $post->fill($request->all());
         $post->user_id = $request->user()->id;
         $post->save();
@@ -83,6 +92,7 @@ class PostController extends Controller
     public function update(PostRequest $request, Post $post)
     {
         $post->fill($request->all())->save();
+        
         return redirect()->route('posts.index');
     }
 
