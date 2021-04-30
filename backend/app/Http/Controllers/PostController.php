@@ -21,7 +21,6 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
-        $posts = Post::all()->sortByDesc('created_at');
 
 
         $keyword = $request->input('keyword');
@@ -31,7 +30,8 @@ class PostController extends Controller
             $query->where('title', 'LIKE', "%{$keyword}%");
         }
 
-        $posts = $query->get();
+        $posts = $query->get()->sortByDesc('created_at');;
+        
         
         return view('posts.index', compact('posts', 'keyword'));
     }
