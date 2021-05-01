@@ -1,5 +1,5 @@
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-gradient" style="background-color: #e3f2fd;">
   <!-- Container wrapper -->
   <div class="container-fluid">
     <!-- Navbar brand -->
