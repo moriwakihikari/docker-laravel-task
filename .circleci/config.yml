@@ -19,7 +19,7 @@ jobs:
                     - "2d:5d:42:7d:cc:5a:ca:7f:4c:eb:d8:0e:61:24:34:38"
             - run: 
                 name: ssh
-                command: ssh ${USER_NAME}@${HOST_NAME} 'cd /var/www/ && git pull'
+                command: ssh ${USER_NAME}@${HOST_NAME} 'cd /var/www/docker-laravel-task && git pull'
 
 workflows:
     version: 2
