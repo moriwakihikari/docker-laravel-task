@@ -13,7 +13,6 @@ jobs:
         machine:
             image: circleci/classic:edge
         steps:
-            - checkout
             - add_ssh_keys:
                 fingerprints:
                     - "2d:5d:42:7d:cc:5a:ca:7f:4c:eb:d8:0e:61:24:34:38"
